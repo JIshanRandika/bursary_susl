@@ -88,6 +88,9 @@ class StatusController extends Controller
         $leveltwo = '{"level":"2"}';
         $levelthree = '{"level":"3"}';
         $levelfour = '{"level":"4"}';
+        $levelfive = '{"level":"5"}';
+        $levelsix = '{"level":"6"}';
+        $levelseven = '{"level":"7"}';
 
 //        if($value==$levelone){
 //            print $value;
@@ -100,7 +103,7 @@ class StatusController extends Controller
         if($value==$levelzero){
             $status->update(
                 [
-                    'status'=>'Verifying list by Student Affairs Division before send to the Assistant Registrar',
+                    'status'=>'Create the List of Bursory Aworded Students by the Student Affirs Division',
                     'level'=>'1']
             );
             return back()->with('success','System updated successfully');
@@ -109,7 +112,7 @@ class StatusController extends Controller
         if($value==$levelone){
             $status->update(
                 [
-                    'status'=>'Verifyied by the Student Affairs Division and Moved to the Assistant Registrar of the Faculty',
+                    'status'=>'Recommended the List by the Student Affairs Division and Moved to the Assistant Registrar of the Faculty',
                     'level'=>'2']
             );
             return back()->with('success','System updated successfully');
@@ -118,7 +121,7 @@ class StatusController extends Controller
         if ($value==$leveltwo) {
             $status->update(
                 [
-                    'status' => 'Assistant Registrar of the Faculty send the Finalized List to Studenet Affirs Division',
+                    'status' => 'Assistant Registrar of the Faculty send the Finalized List to Students Affairs Division For Finalize the List (Check Registration) & Create Vouchers',
                     'level' => '3']
             );
             return back()->with('success','System updated successfully');
@@ -126,13 +129,37 @@ class StatusController extends Controller
         if ($value==$levelthree) {
             $status->update(
                 [
-                    'status' => 'Send the Finalized List to the UGC by the Student Affirs Division',
+                    'status' => 'Finalized the List (Check Registration) & Create Vouchers by the Student Affairs Division And Send To Vice Chancellor And Registrar For Approval',
                     'level' => '4']
             );
             return back()->with('success','System updated successfully');
         }
-
         if ($value==$levelfour) {
+            $status->update(
+                [
+                    'status' => 'Approve Vouchers by the Vice Chancellor or Registrar of the University And Send To The Student Affairs Division For Finalizing the Process and Create PRM Doc',
+                    'level' => '5']
+            );
+            return back()->with('success','System updated successfully');
+        }
+        if ($value==$levelfive) {
+            $status->update(
+                [
+                    'status' => 'Finalized the Process and Created PRM Doc. Send To The Finance Division Clerk',
+                    'level' => '6']
+            );
+            return back()->with('success','System updated successfully');
+        }
+        if ($value==$levelsix) {
+            $status->update(
+                [
+                    'status' => 'Send The Final Vouchers To Bank By Finance Branch',
+                    'level' => '7']
+            );
+            return back()->with('success','System updated successfully');
+        }
+
+        if ($value==$levelseven) {
             $status->update(
                 [
                     'status' => 'Process Finished',
