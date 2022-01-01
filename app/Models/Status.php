@@ -12,9 +12,9 @@ class Status extends Model
     protected $fillable = [
         'batch',
         'faculty',
-        'mahapola_year',
-        'mahapola_month',
-        'mahalpola_description',
+        'bursary_year',
+        'bursary_month',
+        'bursary_description',
         'status',
         'level',
     ];
