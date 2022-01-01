@@ -36,6 +36,16 @@
                                                         <p>{{$arc->ar_comment}}</p>
                                                     @endif
                                                 @endforeach
+
+                                            @endif
+
+                                            @if($s->level!=='1'&&$s->level!=='2'&&$s->level!=='3')
+                                                <h6 class="card-text">Comments by Registrar/VC:</h6>
+                                                @foreach($vcorregcomment as $vrc)
+                                                    @if($s->id==$vrc->status_id)
+                                                        <p>{{$vrc->v_cor_reg_comment}}</p>
+                                                    @endif
+                                                @endforeach
                                             @endif
 
                                         </div>
@@ -139,6 +149,30 @@
                                                 @endif
 
                                                 @if($s->level=='4')
+
+                                                    <form action="{{ route('v_cor_reg_comments.store') }}" method="POST">
+                                                        @csrf
+
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                <div class="form-group">
+                                                                    <strong>Comment:</strong>
+                                                                    <input type="text" name="v_cor_reg_comment"
+                                                                           class="form-control" placeholder="Comment">
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-xs-12 col-sm-12 col-md-12 text-center m-1">
+                                                                <button name="status_id" value="{{$s->id}}" type="submit"
+                                                                        class="btn btn-info">Add Comment
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+
+
                                                     <form action="{{ route('statuses.update',$s->id) }}" method="POST">
                                                         @csrf
                                                         @method('PUT')

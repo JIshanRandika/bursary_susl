@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\arcomment;
 use App\Models\Status;
+use App\Models\VCorRegComment;
 
 
 class HomeController extends Controller
@@ -29,11 +30,12 @@ class HomeController extends Controller
     {
         $arcomment = arcomment::all();
 
+        $vcorregcomment = VCorRegComment::all();
 //        return view('home',compact('arcomment'));
 
         $status = Status::all();
 
-        return view('home',compact('status','arcomment'));
+        return view('home',compact('status','arcomment','vcorregcomment'));
     }
 
 

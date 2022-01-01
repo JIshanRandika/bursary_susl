@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\VCorRegComment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::post('/home/updatemahapolaname', [App\Http\Controllers\HomeController::cl
 
 Route::resource('statuses', \App\Http\Controllers\StatusController::class);
 Route::resource('arcomments', \App\Http\Controllers\ArcommentController::class);
+Route::resource('v_cor_reg_comments', \App\Http\Controllers\VCorRegCommentController::class);
+
 
 Route::get('/getPDF', [App\Http\Controllers\PDFController::class, 'download']);
 
