@@ -100,15 +100,15 @@ class StatusController extends Controller
 
 
 
-        if($value==$levelzero){
-            $status->update(
-                [
-                    'status'=>'Create the List of Bursory Aworded Students by the Student Affirs Division',
-                    'level'=>'1']
-            );
-            return back()->with('success','System updated successfully');
-
-        }
+//        if($value==$levelzero){
+//            $status->update(
+//                [
+//                    'status'=>'Create the List of Bursory Aworded Students by the Student Affirs Division',
+//                    'level'=>'1']
+//            );
+//            return back()->with('success','System updated successfully');
+//
+//        }
         if($value==$levelone){
             $status->update(
                 [
