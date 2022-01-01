@@ -17,9 +17,9 @@ class CreateStatusesTable extends Migration
             $table->id();
             $table->string('batch');
             $table->string('faculty');
-            $table->string('mahapola_year');
-            $table->string('mahapola_month');
-            $table->string('mahalpola_description');
+            $table->string('bursary_year');
+            $table->string('bursary_month');
+            $table->string('bursary_description');
             $table->String('status')->default('New installment process assigned');
             $table->string('level')->default('1');
             $table->timestamps();
