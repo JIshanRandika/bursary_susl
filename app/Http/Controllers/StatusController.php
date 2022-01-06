@@ -79,7 +79,7 @@ class StatusController extends Controller
 
 //        echo 'a';
 
-        print $test;
+//        print $request->testvalue;
 
 
 
@@ -87,7 +87,8 @@ class StatusController extends Controller
         $levelone = '{"level":"1"}';
         $leveltwo = '{"level":"2"}';
         $levelthree = '{"level":"3"}';
-        $levelfour = '{"level":"4"}';
+        $levelfourone = '{"level":"41"}';
+        $levelfourtwo = '{"level":"42"}';
         $levelfive = '{"level":"5"}';
         $levelsix = '{"level":"6"}';
         $levelseven = '{"level":"7"}';
@@ -126,22 +127,42 @@ class StatusController extends Controller
             );
             return back()->with('success','System updated successfully');
         }
-        if ($value==$levelthree) {
+        if ($value==$levelthree && $request->approval=="VC") {
             $status->update(
                 [
-                    'status' => 'Finalized the List (Check Registration) & Create Vouchers by the Student Affairs Division And Send To Vice Chancellor And Registrar For Approval',
-                    'level' => '4']
+                    'status' => 'Finalized the List (Check Registration) & Create Vouchers by the Student Affairs Division And Send To Vice Chancellor For Approval',
+                    'level' => '41']
             );
             return back()->with('success','System updated successfully');
         }
-        if ($value==$levelfour) {
+
+        if ($value==$levelthree && $request->approval=="Registrar") {
             $status->update(
                 [
-                    'status' => 'Approve Vouchers by the Vice Chancellor or Registrar of the University And Send To The Student Affairs Division For Finalizing the Process and Create PRM Doc',
+                    'status' => 'Finalized the List (Check Registration) & Create Vouchers by the Student Affairs Division And Send To Registrar For Approval',
+                    'level' => '42']
+            );
+            return back()->with('success','System updated successfully');
+        }
+
+        if ($value==$levelfourone) {
+            $status->update(
+                [
+                    'status' => 'Approve Vouchers by the Vice Chancellor of the University And Send To The Student Affairs Division For Finalizing the Process and Create PRM Doc',
                     'level' => '5']
             );
             return back()->with('success','System updated successfully');
         }
+
+        if ($value==$levelfourtwo) {
+            $status->update(
+                [
+                    'status' => 'Approve Vouchers by the Registrar of the University And Send To The Student Affairs Division For Finalizing the Process and Create PRM Doc',
+                    'level' => '5']
+            );
+            return back()->with('success','System updated successfully');
+        }
+
         if ($value==$levelfive) {
             $status->update(
                 [

@@ -17,5 +17,6 @@ class Status extends Model
         'bursary_description',
         'status',
         'level',
+        'approved_by',
     ];
 }

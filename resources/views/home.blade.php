@@ -124,8 +124,8 @@
                                     @endif
                                 @endforeach
                             @endif
-{{--                            ===================--}}
-                            @if(checkPermission(['vice_chancellor','registrar']))
+{{--                            VC ===================--}}
+                            @if(checkPermission(['vice_chancellor']))
 
                                 @foreach($status as $s)
 
@@ -148,7 +148,7 @@
                                                     @endforeach
                                                 @endif
 
-                                                @if($s->level=='4')
+                                                @if($s->level=='41')
 
                                                     <form action="{{ route('v_cor_reg_comments.store') }}" method="POST">
                                                         @csrf
@@ -198,6 +198,80 @@
                                 @endforeach
                             @endif
 
+
+{{--                            Reg--}}
+                            @if(checkPermission(['registrar']))
+
+                                @foreach($status as $s)
+
+                                    @if($s->level!=='0')
+                                        <div class="card text-center m-5">
+                                            <div class="card-header">
+                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
+                                                <h6 class="card-text">{{ $s->status }}</h6>
+                                                <p class="card-text">{{ $s->bursary_description }}</p>
+
+                                                @if($s->level!=='1')
+                                                    <h6 class="card-text">Comments by Assistant Registrar:</h6>
+                                                    @foreach($arcomment as $arc)
+                                                        @if($s->id==$arc->status_id)
+                                                            <p>{{$arc->ar_comment}}</p>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+
+                                                @if($s->level=='42')
+
+                                                    <form action="{{ route('v_cor_reg_comments.store') }}" method="POST">
+                                                        @csrf
+
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                <div class="form-group">
+                                                                    <strong>Comment:</strong>
+                                                                    <input type="text" name="v_cor_reg_comment"
+                                                                           class="form-control" placeholder="Comment">
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-xs-12 col-sm-12 col-md-12 text-center m-1">
+                                                                <button name="status_id" value="{{$s->id}}" type="submit"
+                                                                        class="btn btn-info">Add Comment
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+
+
+                                                    <form action="{{ route('statuses.update',$s->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <div class="row">
+
+                                                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    Recommended the List and send to Student Affairs
+                                                                    Division
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+                                                @endif
+                                            </div>
+                                            <div class="card-footer text-muted">
+                                                Last update: {{ $s->updated_at }}
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endif
 {{--                            Assistant Registrar of The Faculty of Graduate Studies--}}
 
                         @if(checkPermission(['graduate_studies_assistant_registrar']))
@@ -900,8 +974,24 @@
                                                     <div class="row">
 
                                                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                                            <button type="submit" class="btn btn-primary">
-                                                                Send the Finalized List to VC and Registrar
+                                                            <button name="approval" value="VC" type="submit" class="btn btn-primary">
+                                                                Send the Finalized List to VC
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+
+                                            <h5>OR</h5>
+                                                <form action="{{ route('statuses.update',$s->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+
+                                                    <div class="row">
+
+                                                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                                            <button name="approval" value="Registrar" type="submit" class="btn btn-primary">
+                                                                Send the Finalized List to Registrar
                                                             </button>
                                                         </div>
                                                     </div>

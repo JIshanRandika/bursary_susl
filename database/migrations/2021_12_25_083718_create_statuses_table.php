@@ -22,6 +22,7 @@ class CreateStatusesTable extends Migration
             $table->string('bursary_description');
             $table->String('status')->default('New installment process assigned');
             $table->string('level')->default('1');
+            $table->string('approved_by')->default('N');
             $table->timestamps();
         });
     }
