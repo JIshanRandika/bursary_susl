@@ -22,7 +22,7 @@
                                 @if($s->level!=='0')
                                     <div class="card text-center m-5">
                                         <div class="card-header">
-                                            Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                            {{ $s->installment_name }}
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -66,7 +66,7 @@
                                     @if($s->level!=='0')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -132,7 +132,7 @@
                                     @if($s->level!=='0')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -207,7 +207,7 @@
                                     @if($s->level!=='0')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -352,7 +352,7 @@
                                     @if($s->level!=='0' && $s->faculty=='Agriculture Science')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -424,7 +424,7 @@
                                     @if($s->level!=='0' && $s->faculty=='Applied Sciences')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -494,7 +494,7 @@
                                     @if($s->level!=='0' && $s->faculty=='Geomatics')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -565,7 +565,7 @@
                                     @if($s->level!=='0' && $s->faculty=='Management Studies')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -636,7 +636,7 @@
                                     @if($s->level!=='0' && $s->faculty=='Medicine')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -707,7 +707,7 @@
                                     @if($s->level!=='0' && $s->faculty=='Social Sciences & Languages')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -777,7 +777,7 @@
                                     @if($s->level!=='0' && $s->faculty=='Technology')
                                         <div class="card text-center m-5">
                                             <div class="card-header">
-                                                Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                                {{ $s->installment_name }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
@@ -892,20 +892,74 @@
 {{--                                                   placeholder="Faculty">--}}
                                         </div>
                                     </div>
+{{--                                    <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Installment year:</strong>--}}
+{{--                                            <input type="text" name="bursary_year" class="form-control"--}}
+{{--                                                   placeholder="Installment year">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>Installment year:</strong>
-                                            <input type="text" name="bursary_year" class="form-control"
-                                                   placeholder="Installment year">
+                                            <strong>Installment Name:</strong>
+
+                                            <select name="installment_name" class="custom-select" id="inputGroupSelect01" >
+                                                <option selected>Choose...</option>
+                                                <option value="Installment 01">Installment 01</option>
+                                                <option value="Installment 02">Installment 02</option>
+                                                <option value="Installment 03">Installment 03</option>
+                                                <option value="Installment 04">Installment 04</option>
+                                                <option value="Installment 05">Installment 05</option>
+                                                <option value="Installment 06">Installment 06</option>
+                                                <option value="Installment 07">Installment 07</option>
+                                                <option value="Installment 08">Installment 08</option>
+                                                <option value="Installment 09">Installment 09</option>
+                                                <option value="Installment 10">Installment 10</option>
+                                                <option value="Installment 11">Installment 11</option>
+                                                <option value="Installment 12">Installment 12</option>
+                                                <option value="Installment 13">Installment 13</option>
+                                                <option value="Installment 14">Installment 14</option>
+                                                <option value="Installment 15">Installment 15</option>
+                                                <option value="Installment 16">Installment 16</option>
+                                                <option value="Installment 17">Installment 17</option>
+                                                <option value="Installment 18">Installment 18</option>
+                                                <option value="Installment 19">Installment 19</option>
+                                                <option value="Installment 20">Installment 20</option>
+                                                <option value="Installment 21">Installment 21</option>
+                                                <option value="Installment 22">Installment 22</option>
+                                                <option value="Installment 23">Installment 23</option>
+                                                <option value="Installment 24">Installment 24</option>
+                                                <option value="Installment 25">Installment 25</option>
+                                                <option value="Installment 26">Installment 26</option>
+                                                <option value="Installment 27">Installment 27</option>
+                                                <option value="Installment 28">Installment 28</option>
+                                                <option value="Installment 29">Installment 29</option>
+                                                <option value="Installment 30">Installment 30</option>
+                                                <option value="Installment 31">Installment 31</option>
+                                                <option value="Installment 32">Installment 32</option>
+                                                <option value="Installment 33">Installment 33</option>
+                                                <option value="Installment 34">Installment 34</option>
+                                                <option value="Installment 35">Installment 35</option>
+                                                <option value="Installment 36">Installment 36</option>
+                                                <option value="Installment 37">Installment 37</option>
+                                                <option value="Installment 38">Installment 38</option>
+                                                <option value="Installment 39">Installment 39</option>
+                                                <option value="Installment 40">Installment 40</option>
+                                            </select>
+
+                                            {{--                                            <input type="text" name="faculty" class="form-control"--}}
+                                            {{--                                                   placeholder="Faculty">--}}
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Installment month:</strong>
-                                            <input type="text" name="bursary_month" class="form-control"
-                                                   placeholder="Installment month">
-                                        </div>
-                                    </div>
+
+{{--                                    <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Installment month:</strong>--}}
+{{--                                            <input type="text" name="bursary_month" class="form-control"--}}
+{{--                                                   placeholder="Installment month">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Installment Description:</strong>
@@ -933,7 +987,7 @@
 
                                     <div class="card text-center m-5">
                                         <div class="card-header">
-                                            Installment for: {{ $s->bursary_year }} {{ $s->bursary_month }}
+                                            {{ $s->installment_name }}
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $s->faculty }} {{ $s->batch }}</h5>
