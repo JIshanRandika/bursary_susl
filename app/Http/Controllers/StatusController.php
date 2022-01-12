@@ -25,6 +25,9 @@ class StatusController extends Controller
     public function create()
     {
         //
+
+
+
     }
 
     /**
@@ -174,7 +177,7 @@ class StatusController extends Controller
         if ($value==$levelsix) {
             $status->update(
                 [
-                    'status' => 'Send The Final Vouchers To Bank By Finance Branch',
+                    'status' => 'PAID',
                     'level' => '7']
             );
             return back()->with('success','System updated successfully');
